@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>employee portal</title>
+    <link rel="icon" href="https://pk4f92.a2cdn1.secureserver.net/wp-content/uploads/2021/06/progressive-solutions-favicon.jpg?time=1715195782" sizes="32x32">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(''); /* Cambia la ruta a relativa */
+            background-size:  800px 2400px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 500px;
+            -webkit-user-select: text;  /* Chrome, Safari, Opera */
+            -moz-user-select: text;     /* Firefox */
+            -ms-user-select: text;      /* IE 10+ */
+            user-select: text;          /* Standard syntax */
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 1em;
+        }
+        .logo {
+            width: 400px;
+            height: auto;
+        }
+        .user-info {
+            text-align: right;
+        }
+        .date-time {
+            margin-left: 1em;
+        }
+        .custom-image-container {
+          max-width: 10px;
+          max-height: 10px;
+          overflow: hidden; 
+        }  
+
+        .custom-image-container img{
+            width: auto;
+            height: auto;
+            max-width: 100%;
+          max-height: 100%;
+        }
+        .status-banner {
+            background-color:#2980B9;
+            color: white;
+            padding: 0.5em;
+            text-align: center;
+        }
+        .status-banner2 {
+            background-color: #FF5733;
+            color: white;
+            padding: 0.5em;
+            text-align: center;
+        }
+        .main-content {
+            display: flex;
+        }
+        .left-section, .right-section {
+            flex: 1;
+            padding: 1em;
+        }
+        .center-section {
+            flex: 2;
+            padding: 1em;
+        }
+        .user-info {
+            background-color: #58D68D;
+            color: #515A5A;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .message-box {
+            background-color: #ccc;
+            padding: 1em;
+        }
+        .quick-access {
+            background-color: #ccc;
+            padding: 1em;
+        }
+
+        /* Estilo para enlaces */
+        .message-box a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* Estilo para enlaces al pasar el ratón */
+        .message-box a:hover {
+            text-decoration: underline;
+        }
+         .notice {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: red;
+            color: white;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="https://pk4f92.a2cdn1.secureserver.net/wp-content/uploads/2021/06/progressive_solutions.png" alt="Logo" class="logo">
+    <div id="custom-image-container">
+        <span id="customImage"></span>
+    </div>
+    <div class="date-time" id="date-time">
+        <p>DATE: <span id="current-date"></span></p>
+        <p>TIME: <span id="current-time"></span></p>
+        <p>TIME ON LINE: <span id="time-counter">0 segundos</span></p>
+    </div>
+</header>
+
+<div class="status-banner2">
+    <strong>EMPLOYE STATUS: PENDING</strong>
+</div>
+
+<div class="main-content">
+    <div class="left-section">
+        <div class="status-banner">TIME AT WORK</div>
+        <div class="message-box">
+            <li><strong>WORK BENEFITS</strong></li>
+        </div>
+        <div class="status-banner">HUMAN RESOURCES APPOINTMENT</div>
+        <div class="message-box">
+            <a href="#" class="link">PENDING</a><br>
+            <a href="#" class="link">AVIABLE NEXT APPOINTMENT</a>
+        </div>
+    </div>
+    <div class="center-section">
+        <div class="status-banner">INFORMATION</div>
+        <!-- Corregir la clase del contenedor -->
+        <div class="message-box">
+            <ul>
+                <li><strong>message 1</strong>
+                    <br>
+                    <span id="mensaje1"></span></li>
+                <br>
+                <li><strong>message 2</strong>
+                    <br>
+                    <span id="mensaje2"></span></li>
+                     <br>
+                <li><strong>message 3</strong>
+                    <br>
+                    <span id="mensaje3"></span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="right-section">
+        <div class="status-banner">PERSONAL INFORMATION</div>
+        <div class="message-box">
+            <ul>
+                <a href="#" class="link">SOCIAL SECURITY(SSN)</a><br>
+                <a href="#" class="link">ITIN OR ID NUMBER</a><br>
+                <a href="#" class="link">ACCOUNT NUMBER</a><br>
+                <a href="#" class="link">EXTRA HOUR BONNUS</a><br>
+                <a href="#" class="link">STATUS APLICATION</a><br>
+                <a href="#" class="link">CONTRACT STATUS</a><br>
+                <div class="notice">The documents have not been uploaded to the employee's profile. / Los documentos no han sido cargados al perfil del empleado.</div>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="user-info">
+    <p><strong>FULL NAME:</strong> <span id="name"></span></p>
+    <p><strong>CONTRACT NUMBER:</strong> <span id="accountNumber"></span></p>
+</div>
+
+<script>
+    // Obtener elementos de fecha y hora
+    const currentDateElem = document.getElementById('current-date');
+    const currentTimeElem = document.getElementById('current-time');
+    const timeCounterElem = document.getElementById('time-counter');
+
+    // Actualizar fecha y hora
+    function updateDateTime() {
+        const currentDate = new Date();
+        const hours = String(currentDate.getHours()).padStart(2, '0');
+        const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+        const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+        const dateStr = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+        currentDateElem.textContent = dateStr;
+        currentTimeElem.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // Contador de tiempo conectado
+    let timeCounter = 0;
+    setInterval(() => {
+        timeCounter++;
+        timeCounterElem.textContent = `${timeCounter} segundos`;
+    }, 1000);
+
+    // Actualizar fecha y hora cada segundo
+    setInterval(updateDateTime, 1000);
+
+    // Actualizar fecha y hora al cargar la página
+    updateDateTime();
+
+    // Obtener el usuario actual del almacenamiento local
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    // Mostrar los datos del usuario en la página
+    if (currentUser) {
+        document.getElementById("name").textContent = currentUser.name;
+        document.getElementById("accountNumber").textContent = currentUser.accountNumber;
+
+        // Mostrar mensajes si existen
+        document.getElementById("mensaje1").textContent = currentUser.mensaje1 || '';
+        document.getElementById("mensaje2").textContent = currentUser.mensaje2 || '';
+        document.getElementById("mensaje3").textContent = currentUser.mensaje3 || '';
+
+        // Establecer la imagen personalizada si existe
+        setCustomImage();
+    }
+
+   function setCustomImage() {
+    const customImageContainer = document.getElementById("custom-image-container");
+    if (currentUser && currentUser.customImage) {
+        const img = new Image();
+        img.onload = function() {
+            // Calcular el tamaño máximo en función del contenedor padre
+            const maxWidth = customImageContainer.offsetWidth;
+            const maxHeight = customImageContainer.offsetHeight;
+            // Calcular el factor de escala para mantener la relación de aspecto
+            const scale = Math.min(maxWidth / img.width, maxHeight / img.height);
+            // Establecer el tamaño máximo de la imagen
+            img.style.maxWidth = `${img.width * 0.3}px`;
+            img.style.maxHeight = `${img.height * 0.2}px`;
+            // Agregar la imagen al contenedor
+            customImageContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar la nueva imagen
+            customImageContainer.appendChild(img);
+        };
+        img.src = currentUser.customImage;
+    } else {
+        // Si no hay una imagen personalizada, limpiar el contenedor
+        customImageContainer.innerHTML = '';
+    }
+}
+     // Seleccionamos todos los enlaces con la clase "link"
+        const links = document.querySelectorAll('.link');
+        // Seleccionamos el elemento del mensaje
+        const notice = document.querySelector('.notice');
+
+        // Añadimos un event listener a cada enlace
+        links.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevenir el comportamiento por defecto del enlace
+                notice.style.display = 'block'; // Mostrar el mensaje
+                setTimeout(() => {
+                    notice.style.display = 'none'; // Ocultar el mensaje después de 3 segundos
+                }, 5000);
+            });
+        });
+</script>
+
+</body>
+</html>
